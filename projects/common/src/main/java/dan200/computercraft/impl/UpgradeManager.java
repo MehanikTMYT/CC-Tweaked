@@ -129,6 +129,7 @@ public final class UpgradeManager<T extends UpgradeBase> {
     public UpgradeData<T> get(HolderLookup<T> registries, ItemStack stack) {
         if (stack.isEmpty()) return null;
 
+        // homebaked 26.1.2: backport 0d9a12179 — normalise to a single item (fixes #2533 on mc-26.1 structure)
         return registries.listElements()
             .filter(holder -> {
                 var upgrade = holder.value();
@@ -136,7 +137,7 @@ public final class UpgradeManager<T extends UpgradeBase> {
                 return craftingStack.is(stack.getItem()) && upgrade.isItemSuitable(stack);
             })
             .findAny()
-            .map(x -> UpgradeData.of(x, x.value().getUpgradeData(ItemStackTemplate.fromNonEmptyStack(stack))))
+            .map(x -> UpgradeData.of(x, x.value().getUpgradeData(ItemStackTemplate.fromNonEmptyStack(stack.copyWithCount(1)))))
             .orElse(null);
     }
 
