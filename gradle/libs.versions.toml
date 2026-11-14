@@ -170,9 +170,9 @@ annotations = ["checkerFramework", "jetbrainsAnnotations", "jspecify"]
 kotlin = ["kotlin-stdlib", "kotlin-coroutines"]
 
 # Minecraft
-externalMods-common = ["iris-forge", "jei-api", "nightConfig-core", "nightConfig-toml"]
-externalMods-forge-compile = ["iris-forge", "jei-api"]
-externalMods-forge-runtime = ["jei-forge"]
+externalMods-common = ["iris-forge", "nightConfig-core", "nightConfig-toml"] # fleet: jei-api removed — EMI-only
+externalMods-forge-compile = ["iris-forge"] # fleet: jei-api removed — EMI-only
+externalMods-forge-runtime = [] # fleet: jei-forge removed — EMI-only
 externalMods-fabric-compile = ["fabricPermissions", "iris-fabric", "jei-api", "rei-api", "rei-builtin"]
 externalMods-fabric-runtime = ["jei-fabric"]
 
